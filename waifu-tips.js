@@ -24,12 +24,12 @@ function loadWidget(config) {
 				<div id="waifu-tips"></div>
 				<canvas id="live2d" width="800" height="800"></canvas>
 				<div id="waifu-tool">
-					<!-- <span class="fa fa-lg fa-comment"></span>
-					<span class="fa fa-lg fa-paper-plane"></span>
+					<span class="fa fa-lg fa-comment"></span>
+					<!-- <span class="fa fa-lg fa-paper-plane"></span>
 					<span class="fa fa-lg fa-user-circle"></span>
 					<span class="fa fa-lg fa-street-view"></span> -->
 					<span class="fa fa-lg fa-camera-retro"></span>
-					<span class="fa fa-lg fa-info-circle"></span>
+					<!-- <span class="fa fa-lg fa-info-circle"></span> -->
 					<span class="fa fa-lg fa-times"></span>
 				</div>
 			</div>`
@@ -78,9 +78,9 @@ function loadWidget(config) {
     }
   }, 1000);
   (function registerEventListener() {
-    // document
-    //   .querySelector("#waifu-tool .fa-comment")
-    //   .addEventListener("click", showHitokoto);
+    document
+      .querySelector("#waifu-tool .fa-comment")
+      .addEventListener("click", showHitokoto);
     // document
     //   .querySelector("#waifu-tool .fa-paper-plane")
     //   .addEventListener("click", () => {
@@ -108,11 +108,11 @@ function loadWidget(config) {
         Live2D.captureName = "photo.png";
         Live2D.captureFrame = true;
       });
-    document
-      .querySelector("#waifu-tool .fa-info-circle")
-      .addEventListener("click", () => {
-        open("https://github.com/veehz/live2d-widget");
-      });
+    // document
+    //   .querySelector("#waifu-tool .fa-info-circle")
+    //   .addEventListener("click", () => {
+    //     open("https://github.com/veehz/live2d-widget");
+    //   });
     document
       .querySelector("#waifu-tool .fa-times")
       .addEventListener("click", () => {
@@ -159,7 +159,7 @@ function loadWidget(config) {
       else if (now > 7 && now <= 11)
         // text = "上午好！工作顺利嘛，不要久坐，多起来走动走动哦！";
         text =
-          "Good morning! Have a nice day! Remember not to move around once in a while!";
+          "Good morning! Have a nice day! Remember to move around once in a while!";
       else if (now > 11 && now <= 13)
         // text = "中午了，工作了一个上午，现在是午餐时间！";
         text = "It's lunch time!";
@@ -208,7 +208,14 @@ function loadWidget(config) {
     }
     showMessage(text, 7000, 8);
   })();
-  function showHitokoto() {}
+  function showHitokoto() {
+    // use quotable instad of hitokoto.cn
+    fetch("https://api.quotable.io/random?maxLength=50")
+      .then((res) => res.json())
+      .then((res) => {
+        showMessage(`${res.content} - ${res.author}`, 6000, 9);
+      });
+  }
   function showMessage(text, timeout, priority) {
     if (
       !text ||
