@@ -78,28 +78,28 @@ function loadWidget(config) {
     }
   }, 1000);
   (function registerEventListener() {
-    document
-      .querySelector("#waifu-tool .fa-comment")
-      .addEventListener("click", showHitokoto);
-    document
-      .querySelector("#waifu-tool .fa-paper-plane")
-      .addEventListener("click", () => {
-        if (window.Asteroids) {
-          if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
-          window.ASTEROIDSPLAYERS.push(new Asteroids());
-        } else {
-          const script = document.createElement("script");
-          script.src =
-            "https://cdn.jsdelivr.net/gh/stevenjoezhang/asteroids/asteroids.js";
-          document.head.appendChild(script);
-        }
-      });
-    document
-      .querySelector("#waifu-tool .fa-user-circle")
-      .addEventListener("click", loadOtherModel);
-    document
-      .querySelector("#waifu-tool .fa-street-view")
-      .addEventListener("click", loadRandModel);
+    // document
+    //   .querySelector("#waifu-tool .fa-comment")
+    //   .addEventListener("click", showHitokoto);
+    // document
+    //   .querySelector("#waifu-tool .fa-paper-plane")
+    //   .addEventListener("click", () => {
+    //     if (window.Asteroids) {
+    //       if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
+    //       window.ASTEROIDSPLAYERS.push(new Asteroids());
+    //     } else {
+    //       const script = document.createElement("script");
+    //       script.src =
+    //         "https://cdn.jsdelivr.net/gh/stevenjoezhang/asteroids/asteroids.js";
+    //       document.head.appendChild(script);
+    //     }
+    //   });
+    // document
+    //   .querySelector("#waifu-tool .fa-user-circle")
+    //   .addEventListener("click", loadOtherModel);
+    // document
+    //   .querySelector("#waifu-tool .fa-street-view")
+    //   .addEventListener("click", loadRandModel);
     document
       .querySelector("#waifu-tool .fa-camera-retro")
       .addEventListener("click", () => {
@@ -275,13 +275,13 @@ function loadWidget(config) {
   //     const response = await fetch(`${cdnPath}model_list.json`);
   //     modelList = await response.json();
   //   }
-  async function loadModel() {
+  async function loadModel(message) {
     // only load shizuku
     showMessage(message, 4000, 10);
     const now = new Date().getHours();
     let target = "shizuku-48";
     if (now > 21 || now < 6) target = "shizuku-pajama";
-    loadlive2d("live2d", `${cdnPath}model/${target}/index.json`);
+    loadlive2d("live2d", `${cdnPath}models/${target}/index.json`);
   }
   //   async function loadRandModel() {
   //     const modelId = localStorage.getItem("modelId"),
