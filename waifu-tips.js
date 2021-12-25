@@ -111,7 +111,7 @@ function loadWidget(config) {
     document
       .querySelector("#waifu-tool .fa-info-circle")
       .addEventListener("click", () => {
-        open("https://github.com/stevenjoezhang/live2d-widget");
+        open("https://github.com/veehz/live2d-widget");
       });
     document
       .querySelector("#waifu-tool .fa-times")
